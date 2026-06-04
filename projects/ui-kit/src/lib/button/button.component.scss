@@ -1,6 +1,10 @@
 @use '../styles/mixins' as m;
 
-.uikit-button {
+// Host = the native <button> / <a> the directive attaches to. With Angular's
+// default Emulated encapsulation a plain `.uikit-button` selector would not
+// match the host element (it only gets the _nghost attribute, not _ngcontent)
+// — so anything that styles the host has to go inside `:host(...)`.
+:host {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -35,57 +39,63 @@
     cursor: not-allowed;
     opacity: 0.55;
   }
+}
 
-  // ── variants ───────────────────────────────────────────────────────────
-  &--primary {
-    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 80%, #000));
-    color: #fff;
-    border-color: color-mix(in srgb, var(--accent) 70%, #000);
-    &:hover:not(:disabled) {
-      transform: translateY(-1px);
-    }
-    &:active {
-      transform: translateY(0);
-    }
+// ── variants ───────────────────────────────────────────────────────────────
+:host(.uikit-button--primary) {
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 80%, #000));
+  color: #fff;
+  border-color: color-mix(in srgb, var(--accent) 70%, #000);
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
   }
-  &--secondary {
-    background: var(--surface-2);
-    border-color: var(--border);
-    &:hover:not(:disabled) {
-      background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
-      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-    }
-  }
-  &--ghost {
-    color: var(--text-muted);
-    &:hover:not(:disabled) {
-      color: var(--text);
-      background: var(--surface-2);
-    }
-  }
-  &--danger {
-    background: linear-gradient(180deg, var(--danger), color-mix(in srgb, var(--danger) 80%, #000));
-    color: #fff;
-  }
-
-  // ── sizes ──────────────────────────────────────────────────────────────
-  &--sm {
-    height: 28px;
-    padding: 0 var(--space-2);
-    font-size: var(--fs-xs);
-  }
-  &--lg {
-    height: 42px;
-    padding: 0 var(--space-4);
-    font-size: var(--fs-md);
-  }
-
-  // ── loading ────────────────────────────────────────────────────────────
-  &--loading {
-    pointer-events: none;
+  &:active {
+    transform: translateY(0);
   }
 }
 
+:host(.uikit-button--secondary) {
+  background: var(--surface-2);
+  border-color: var(--border);
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  }
+}
+
+:host(.uikit-button--ghost) {
+  color: var(--text-muted);
+  &:hover:not(:disabled) {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+}
+
+:host(.uikit-button--danger) {
+  background: linear-gradient(180deg, var(--danger), color-mix(in srgb, var(--danger) 80%, #000));
+  color: #fff;
+  border-color: color-mix(in srgb, var(--danger) 70%, #000);
+}
+
+// ── sizes ──────────────────────────────────────────────────────────────────
+:host(.uikit-button--sm) {
+  height: 28px;
+  padding: 0 var(--space-2);
+  font-size: var(--fs-xs);
+}
+
+:host(.uikit-button--lg) {
+  height: 42px;
+  padding: 0 var(--space-4);
+  font-size: var(--fs-md);
+}
+
+// ── loading ────────────────────────────────────────────────────────────────
+:host(.uikit-button--loading) {
+  pointer-events: none;
+}
+
+// ── projected content + spinner (these live inside the template) ───────────
 .uikit-button__content {
   display: inline-flex;
   align-items: center;

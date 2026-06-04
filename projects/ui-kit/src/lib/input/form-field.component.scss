@@ -1,4 +1,6 @@
-.uikit-form-field {
+// Host styles need :host() because the host's class lives on _nghost, not
+// _ngcontent — see the same comment in button.component.scss.
+:host {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -26,7 +28,7 @@
   }
 }
 
-.uikit-form-field--invalid input,
-.uikit-form-field--invalid textarea {
+:host(.uikit-form-field--invalid) ::ng-deep input,
+:host(.uikit-form-field--invalid) ::ng-deep textarea {
   border-color: var(--danger);
 }

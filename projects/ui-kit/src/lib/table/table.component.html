@@ -1,0 +1,113 @@
+<div class="uikit-table-wrap">
+  <table class="uikit-table" role="table">
+    <thead>
+      <tr>
+        @for (col of columnList(); track col.key) {
+          <th
+            scope="col"
+            [class.uikit-table__th--sortable]="col.sortable"
+            [attr.aria-sort]="
+              sortIcon(col) === 'asc'
+                ? 'ascending'
+                : sortIcon(col) === 'desc'
+                  ? 'descending'
+                  : col.sortable
+                    ? 'none'
+                    : null
+            "
+            [style.justify-content]="alignStyle(col)"
+          >
+            <button
+              type="button"
+              class="uikit-table__th-btn"
+              [disabled]="!col.sortable"
+              (click)="sortBy(col)"
+              [attr.aria-label]="col.sortable ? 'Sort by ' + col.label : null"
+            >
+              <span>{{ col.label }}</span>
+              @if (col.sortable) {
+                <span
+                  class="uikit-table__sort-icon"
+                  [class.uikit-table__sort-icon--active]="sortIcon(col)"
+                >
+                  @if (sortIcon(col) === 'desc') {
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  } @else {
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                  }
+                </span>
+              }
+            </button>
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading) {
+        <tr>
+          <td [attr.colspan]="columnList().length" class="uikit-table__state">Loading…</td>
+        </tr>
+      } @else if (pageRows().length === 0) {
+        <tr>
+          <td [attr.colspan]="columnList().length" class="uikit-table__state">
+            {{ emptyMessage }}
+          </td>
+        </tr>
+      } @else {
+        @for (row of pageRows(); track $index) {
+          <tr>
+            @for (col of columnList(); track col.key) {
+              <td [style.text-align]="col.align ?? 'left'">{{ cellValue(col, row) }}</td>
+            }
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  @if (totalPages() > 1) {
+    <nav class="uikit-table__pagination" aria-label="Pagination">
+      <button
+        type="button"
+        class="uikit-table__page-btn"
+        [disabled]="page() === 0"
+        (click)="prevPage()"
+        aria-label="Previous page"
+      >
+        ←
+      </button>
+      <span class="uikit-table__page-status">Page {{ page() + 1 }} of {{ totalPages() }}</span>
+      <button
+        type="button"
+        class="uikit-table__page-btn"
+        [disabled]="page() + 1 >= totalPages()"
+        (click)="nextPage()"
+        aria-label="Next page"
+      >
+        →
+      </button>
+    </nav>
+  }
+</div>

@@ -1,0 +1,79 @@
+<app-page-header
+  title="Ng-UIKit"
+  lede="A small, polished Angular component library — accessible by default, themed entirely with CSS custom properties, built as a publishable Angular library. Eight components, zero magic."
+/>
+
+<div class="home__cta">
+  <a uikitButton variant="primary" routerLink="/button">Browse components</a>
+  <a
+    uikitButton
+    variant="secondary"
+    href="https://github.com/Hadi-AlKammouni/ng-uikit"
+    target="_blank"
+    rel="noopener"
+    >View on GitHub</a
+  >
+</div>
+
+<section class="home__section">
+  <h2 class="home__h2">Install</h2>
+  <app-code-block [code]="installCode" language="bash" />
+</section>
+
+<section class="home__section">
+  <h2 class="home__h2">Use</h2>
+  <app-code-block [code]="usageCode" language="ts" />
+</section>
+
+<section class="home__section">
+  <h2 class="home__h2">What ships in v1</h2>
+  <ul class="home__list">
+    <li>
+      <a routerLink="/button"><strong>Button</strong></a> — 4 variants × 3 sizes, loading state,
+      icon support.
+    </li>
+    <li>
+      <a routerLink="/input"><strong>Input + Form field</strong></a> — labelled, hint &amp; error
+      states, reactive-forms-ready.
+    </li>
+    <li>
+      <a routerLink="/modal"><strong>Modal</strong></a> — CDK Overlay, focus trap, ESC + backdrop
+      dismiss, focus restoration.
+    </li>
+    <li>
+      <a routerLink="/toast"><strong>Toast</strong></a> — service-driven, stacked, auto-dismiss,
+      ARIA live regions.
+    </li>
+    <li>
+      <a routerLink="/table"><strong>Data table</strong></a> — sortable columns, pagination, empty
+      &amp; loading states.
+    </li>
+    <li>
+      <a routerLink="/tabs"><strong>Tabs</strong></a> — full arrow-key navigation, animated active
+      state.
+    </li>
+  </ul>
+</section>
+
+<section class="home__section">
+  <h2 class="home__h2">Design decisions</h2>
+  <ul class="home__list home__list--decisions">
+    <li>
+      <strong>CSS custom properties for theming.</strong> Every visual token (color, spacing, type)
+      is a CSS variable. Dark/light themes are a one-attribute toggle, no JS, no bundle cost.
+    </li>
+    <li>
+      <strong>CDK over hand-rolled overlays.</strong> Modal and Toast use Angular CDK's
+      <code>Overlay</code> + <code>FocusTrap</code> — battle-tested for accessibility (focus
+      restoration, ESC handling, scroll lock).
+    </li>
+    <li>
+      <strong>Standalone components only.</strong> No <code>NgModule</code>s. Consumers import
+      individual symbols and pay only for what they use.
+    </li>
+    <li>
+      <strong>Attribute-selector buttons.</strong> <code>&lt;button uikitButton&gt;</code> keeps
+      native semantics, type ahead, form integration, and focus behaviour.
+    </li>
+  </ul>
+</section>

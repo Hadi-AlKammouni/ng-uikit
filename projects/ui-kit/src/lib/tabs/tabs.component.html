@@ -1,0 +1,27 @@
+<div class="uikit-tabs">
+  <div role="tablist" class="uikit-tabs__list">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button
+        type="button"
+        role="tab"
+        data-uikit-tab-trigger
+        class="uikit-tabs__trigger"
+        [class.uikit-tabs__trigger--active]="isSelected(i)"
+        [attr.aria-selected]="isSelected(i)"
+        [attr.tabindex]="isSelected(i) ? 0 : -1"
+        [disabled]="tab.disabled"
+        (click)="select(i)"
+        (keydown)="onKeydown($event, i)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+  <div role="tabpanel" class="uikit-tabs__panel">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      @if (isSelected(i)) {
+        <ng-container [ngTemplateOutlet]="tab.content" />
+      }
+    }
+  </div>
+</div>

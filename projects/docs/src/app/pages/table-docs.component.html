@@ -1,0 +1,29 @@
+<app-page-header
+  title="Data table"
+  lede="Click a header to sort. Headers announce their sort state via aria-sort, and pagination is keyboard-accessible."
+/>
+
+<app-example title="Sortable, paginated" [code]="basicCode">
+  <div style="width: 100%">
+    <uikit-table [columns]="columns" [rows]="rows" [pageSize]="5" />
+  </div>
+</app-example>
+
+<app-props-table [props]="props" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>Sortable headers are buttons (focusable, click + Enter/Space to toggle).</li>
+    <li>
+      Current sort state is exposed via
+      <code class="mono">aria-sort="ascending|descending|none"</code> on each
+      <code class="mono">&lt;th&gt;</code>.
+    </li>
+    <li>
+      Pagination buttons have accessible labels ("Previous page", "Next page") and gain a visible
+      focus ring.
+    </li>
+    <li>Empty &amp; loading states span all columns with a centered message.</li>
+  </ul>
+</section>

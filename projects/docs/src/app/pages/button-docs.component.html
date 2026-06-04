@@ -1,0 +1,58 @@
+<app-page-header
+  title="Button"
+  lede="Attribute-selector button. Wraps a native <button> so it keeps focus, form, and keyboard semantics for free."
+/>
+
+<app-example title="Variants" [code]="variantsCode">
+  <button uikitButton variant="primary">Primary</button>
+  <button uikitButton variant="secondary">Secondary</button>
+  <button uikitButton variant="ghost">Ghost</button>
+  <button uikitButton variant="danger">Delete</button>
+</app-example>
+
+<app-example title="Sizes" [code]="sizesCode">
+  <button uikitButton size="sm">Small</button>
+  <button uikitButton size="md">Medium</button>
+  <button uikitButton size="lg">Large</button>
+</app-example>
+
+<app-example title="Loading" [code]="loadingCode">
+  <button uikitButton [loading]="true" data-testid="button-loading">Save</button>
+  <button uikitButton variant="secondary" [loading]="true">Sync</button>
+</app-example>
+
+<app-example title="Disabled" [code]="disabledCode">
+  <button uikitButton disabled>Disabled</button>
+  <button uikitButton variant="secondary" disabled>Disabled</button>
+</app-example>
+
+<app-example title="As a link" [code]="linkCode">
+  <a uikitButton variant="secondary" href="https://github.com/Hadi-AlKammouni/ng-uikit"
+    >Read on GitHub</a
+  >
+</app-example>
+
+<app-props-table [props]="props" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>
+      Renders as a native <code class="mono">&lt;button&gt;</code> or
+      <code class="mono">&lt;a&gt;</code>; keyboard activation, focus order, and form participation
+      are all native.
+    </li>
+    <li>
+      Visible focus ring at 2 px in the accent color (offset for contrast against any surface).
+    </li>
+    <li>
+      <code class="mono">loading</code> sets <code class="mono">aria-busy</code> and
+      <code class="mono">aria-disabled</code>; the spinner is
+      <code class="mono">aria-hidden</code> so it doesn't pollute screen-reader output.
+    </li>
+    <li>
+      Respects <code class="mono">prefers-reduced-motion</code> — the spinner animation is reduced
+      to a static frame.
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,32 @@
+.uikit-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.uikit-form-field__label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.uikit-form-field__control {
+  display: contents;
+}
+
+.uikit-form-field__msg {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+
+  &--error {
+    color: var(--danger);
+  }
+}
+
+.uikit-form-field--invalid input,
+.uikit-form-field--invalid textarea {
+  border-color: var(--danger);
+}

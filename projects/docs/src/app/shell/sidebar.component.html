@@ -1,0 +1,20 @@
+<nav class="sidebar" aria-label="Docs">
+  @for (group of sections(); track group.section) {
+    <div class="sidebar__group">
+      <p class="sidebar__heading">{{ group.section }}</p>
+      <ul class="sidebar__list">
+        @for (item of group.items; track item.path) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="sidebar__link--active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              class="sidebar__link"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</nav>

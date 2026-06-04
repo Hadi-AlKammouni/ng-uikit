@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+.page-header__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.page-header__lede {
+  margin-top: var(--space-3);
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  max-width: 60ch;
+  line-height: 1.6;
+}

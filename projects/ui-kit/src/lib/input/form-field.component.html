@@ -1,0 +1,11 @@
+<label class="uikit-form-field__label" [for]="fieldId">{{ label }}</label>
+<div class="uikit-form-field__control">
+  <ng-content />
+</div>
+@if (error) {
+  <p class="uikit-form-field__msg uikit-form-field__msg--error" [id]="errorId" role="alert">
+    {{ error }}
+  </p>
+} @else if (hint) {
+  <p class="uikit-form-field__msg" [id]="hintId">{{ hint }}</p>
+}

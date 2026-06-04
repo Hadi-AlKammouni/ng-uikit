@@ -1,0 +1,40 @@
+<app-page-header
+  title="Input + Form field"
+  lede="A `uikitInput` directive styles the native control; the optional `<uikit-form-field>` wraps it with a label, hint, and error state."
+/>
+
+<app-example title="Basic" [code]="basicCode">
+  <uikit-form-field label="Full name" hint="Used on your billing receipts.">
+    <input uikitInput placeholder="Ada Lovelace" [(ngModel)]="fullName" data-testid="input-name" />
+  </uikit-form-field>
+</app-example>
+
+<app-example title="Error state" [code]="errorCode">
+  <uikit-form-field label="Email" error="That doesn't look like an email address.">
+    <input uikitInput type="email" [(ngModel)]="emailWithError" />
+  </uikit-form-field>
+</app-example>
+
+<app-example title="Textarea" [code]="textareaCode">
+  <uikit-form-field label="Notes" hint="Markdown welcome.">
+    <textarea uikitInput rows="4"></textarea>
+  </uikit-form-field>
+</app-example>
+
+<app-props-table [props]="fieldProps" title="uikit-form-field inputs" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>
+      Label is rendered as a real <code class="mono">&lt;label for&gt;</code> tag — clicking it
+      focuses the control.
+    </li>
+    <li>
+      Hint and error messages are linked to the control via
+      <code class="mono">aria-describedby</code>; errors also use
+      <code class="mono">role="alert"</code> so screen readers announce them immediately.
+    </li>
+    <li>Focus ring matches the accent token with a soft 3 px halo for contrast on either theme.</li>
+  </ul>
+</section>

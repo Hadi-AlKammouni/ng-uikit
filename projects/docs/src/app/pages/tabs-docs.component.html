@@ -1,0 +1,46 @@
+<app-page-header
+  title="Tabs"
+  lede="A roving-tabindex tab group. Use ←/→ to move focus between tabs, Home/End to jump to either end."
+/>
+
+<app-example title="Three tabs, one disabled" [code]="basicCode">
+  <div style="width: 100%">
+    <uikit-tabs data-testid="tabs">
+      <uikit-tab label="Overview">
+        <p>Pipeline succeeded in 2 min 17 s. 12 tests passed.</p>
+      </uikit-tab>
+      <uikit-tab label="Logs">
+        <p class="mono">[12:43:01] Build started…</p>
+        <p class="mono">[12:43:24] Tests passing (12)</p>
+        <p class="mono">[12:45:18] Pipeline complete ✔</p>
+      </uikit-tab>
+      <uikit-tab label="Artifacts" [disabled]="true">
+        <p>Artifacts are still uploading…</p>
+      </uikit-tab>
+    </uikit-tabs>
+  </div>
+</app-example>
+
+<app-props-table [props]="props" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>
+      The tab list uses <code class="mono">role="tablist"</code>, individual triggers use
+      <code class="mono">role="tab"</code>, and content uses
+      <code class="mono">role="tabpanel"</code>.
+    </li>
+    <li>
+      Only the selected tab is in the focus order (<code class="mono">tabindex="0"</code>); the rest
+      get <code class="mono">tabindex="-1"</code>.
+    </li>
+    <li>
+      Arrow keys cycle through enabled tabs and skip disabled ones; Home/End jump to the first/last
+      enabled tab.
+    </li>
+    <li>
+      Selected state is conveyed visually <em>and</em> via <code class="mono">aria-selected</code>.
+    </li>
+  </ul>
+</section>

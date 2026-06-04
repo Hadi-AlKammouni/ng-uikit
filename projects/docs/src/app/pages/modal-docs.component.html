@@ -1,0 +1,35 @@
+<app-page-header
+  title="Modal"
+  lede="A focus-trapping dialog rendered into a CDK Overlay. The trigger's focus is restored on close."
+/>
+
+<app-example title="Open a confirm dialog" [code]="basicCode" language="ts">
+  <button uikitButton variant="danger" (click)="openConfirm()" data-testid="open-modal">
+    Delete workspace…
+  </button>
+</app-example>
+
+<app-props-table [props]="props" title="ModalConfig" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>
+      The dialog has <code class="mono">role="dialog"</code>,
+      <code class="mono">aria-modal="true"</code>, and is labelled by its title (or a fallback
+      aria-label when titleless).
+    </li>
+    <li>
+      Focus is trapped inside the modal using <code class="mono">@angular/cdk/a11y</code>
+      <code class="mono">ConfigurableFocusTrap</code>.
+    </li>
+    <li>
+      On close, focus is restored to whichever element opened the dialog — try opening a modal,
+      closing it with ESC, and notice the trigger button highlights again.
+    </li>
+    <li>
+      Backdrop click and ESC dismiss are independently opt-out via
+      <code class="mono">closeOnBackdrop</code> / <code class="mono">closeOnEscape</code>.
+    </li>
+  </ul>
+</section>

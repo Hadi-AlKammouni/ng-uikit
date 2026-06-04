@@ -1,0 +1,55 @@
+<app-page-header
+  title="Design tokens"
+  lede="Every visual decision in Ng-UIKit comes through a CSS custom property. Override them at any scope to retheme the whole library, no rebuild required."
+/>
+
+<section class="tokens">
+  <h2 class="tokens__h2">Color</h2>
+  <div class="tokens__grid">
+    @for (t of colorTokens; track t.name) {
+      <div class="swatch">
+        <span class="swatch__chip" [style.background]="'var(' + t.cssVar + ')'"></span>
+        <div>
+          <p class="swatch__name mono">{{ t.cssVar }}</p>
+          <p class="swatch__meta">{{ t.name }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="tokens">
+  <h2 class="tokens__h2">Spacing</h2>
+  <div class="tokens__list">
+    @for (s of spaceTokens; track s.name) {
+      <div class="space-row">
+        <span class="space-row__name mono">--{{ s.name }}</span>
+        <span class="space-row__bar" [style.width]="s.size"></span>
+        <span class="space-row__meta">{{ s.size }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="tokens">
+  <h2 class="tokens__h2">Type scale</h2>
+  <div class="tokens__list">
+    @for (t of typeScale; track t.name) {
+      <div class="type-row">
+        <span class="type-row__name mono">--{{ t.name }}</span>
+        <span class="type-row__sample" [style.font-size]="t.size">The quick brown fox</span>
+        <span class="type-row__meta">{{ t.size }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="tokens">
+  <h2 class="tokens__h2">Theming</h2>
+  <p class="tokens__lede">
+    Each token is a plain CSS variable. To make a custom theme, override the variables under any
+    selector — typically <code class="mono">:root</code> or
+    <code class="mono">[data-theme="..."]</code>. The whole library inherits the change.
+  </p>
+  <app-code-block [code]="themingCode" language="scss" />
+</section>

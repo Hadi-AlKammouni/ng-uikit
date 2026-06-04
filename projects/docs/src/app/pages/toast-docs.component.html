@@ -1,0 +1,31 @@
+<app-page-header
+  title="Toast"
+  lede="Service-driven notifications. Stacks in the top-right, dismisses automatically, plays nicely with assistive tech via aria-live."
+/>
+
+<app-example title="Try each variant" [code]="basicCode" language="ts">
+  <button uikitButton variant="ghost" (click)="info()">Info</button>
+  <button uikitButton variant="ghost" (click)="success()" data-testid="toast-success">
+    Success
+  </button>
+  <button uikitButton variant="ghost" (click)="warning()">Warning</button>
+  <button uikitButton variant="ghost" (click)="danger()">Danger</button>
+</app-example>
+
+<app-props-table [props]="props" title="ToastOptions" />
+
+<section class="docs-a11y">
+  <h2 class="docs-a11y__h2">Accessibility</h2>
+  <ul>
+    <li>
+      Each toast uses <code class="mono">role="status"</code> for info/success and
+      <code class="mono">role="alert"</code> for warning/danger.
+    </li>
+    <li>
+      Politeness scales with severity: <code class="mono">aria-live="assertive"</code> for danger,
+      <code class="mono">polite"</code> otherwise.
+    </li>
+    <li>The dismiss button has an accessible label and is keyboard-focusable.</li>
+    <li>Enter-animation honours <code class="mono">prefers-reduced-motion</code>.</li>
+  </ul>
+</section>

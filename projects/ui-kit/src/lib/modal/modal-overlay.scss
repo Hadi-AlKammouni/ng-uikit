@@ -1,0 +1,12 @@
+// Backdrop + panel classes — applied to elements that CDK renders OUTSIDE the
+// component tree (under <body>). Component-scoped styles can't reach them,
+// so consumers import this file once globally.
+
+.uikit-modal__backdrop {
+  background: color-mix(in srgb, #000 60%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.uikit-modal__panel-wrap {
+  padding: var(--space-4);
+}

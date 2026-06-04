@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.layout__sidebar {
+  position: relative;
+}
+
+.layout__main {
+  padding: var(--space-6) 0 var(--space-7);
+  min-width: 0;
+}
+
+@media (max-width: 880px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 0 var(--space-4);
+  }
+  .layout__sidebar {
+    display: none;
+  }
+}

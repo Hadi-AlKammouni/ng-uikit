@@ -1,0 +1,19 @@
+<span class="uikit-button__content" [class.uikit-button__content--hidden]="loading">
+  <ng-content />
+</span>
+@if (loading) {
+  <span class="uikit-button__spinner" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-dasharray="40 60"
+      />
+    </svg>
+  </span>
+}
